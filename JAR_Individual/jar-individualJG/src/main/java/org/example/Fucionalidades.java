@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Fucionalidades {
 
-    static void matarProcessos() {
+  public   static void matarProcessos() {
         Utilitarios utilitarios = new Utilitarios();
         try {
             while (true) {
@@ -73,7 +73,7 @@ public class Fucionalidades {
         }
     }
 
-    static void limparConsole() {
+    public static void limparConsole() {
         try {
             final String os = System.getProperty("os.name");
             if (os.contains("Windows")) {

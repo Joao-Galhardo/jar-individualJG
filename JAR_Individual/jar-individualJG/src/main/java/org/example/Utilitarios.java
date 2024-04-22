@@ -27,7 +27,7 @@ public class Utilitarios {
         System.out.println("                                                           /____/               ");
 
     }
- public    void exibirMenu(){
+ public  void exibirMenu(){
         System.out.println("""
                            
                         __________________________________________________________________
@@ -70,5 +70,18 @@ public class Utilitarios {
 
         }
     }
+
+    public void mensagemInformativa(){
+
+        System.out.println("""
+                                               Monitoramento ativo!
+                        
+                        Este computador é monitorado em tempo real, incluindo o hardware, para
+                        assegurar conformidade com as políticas da empresa.
+                        Todas as atividades serão verificadas e, se necessário, medidas serão
+                        tomadas automaticamente pelo sistema.
+                """);
+    }
+
 }
 
