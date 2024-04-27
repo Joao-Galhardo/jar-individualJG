@@ -12,7 +12,8 @@ private static Connection conn = null;
     public static  Connection getConection() {
         if (conn == null) {
             try {
-                conn = DriverManager.getConnection("jdbc:mysql://:3306/hardware_security", "root", "180118");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hardware_security", "root", "180118");
+
             }
                 catch (SQLException e) {
                     System.out.println("Erro ao conectar com o banco de dados: " + e.getMessage());

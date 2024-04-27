@@ -1,12 +1,19 @@
 package org.example;
 
+import com.github.britooo.looca.api.core.Looca;
+import org.example.Db.Db;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.*;
+import java.text.DecimalFormat;
 
-public class Fucionalidades {
+public class Funcionalidades {
+    Looca looca = new Looca();
+    Utilitarios utilitarios = new Utilitarios();
 
-  public   static void matarProcessos() {
+    public static void matarProcessos() {
         Utilitarios utilitarios = new Utilitarios();
         try {
             while (true) {
@@ -100,13 +107,50 @@ public class Fucionalidades {
     }
 
 
-
     public void encerraProcesso(Integer pid) {
         try {
             Runtime.getRuntime().exec("taskkill /F /PID " + pid);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void usoHardware() {
+
+        Double porcentagemRam = ((double) looca.getMemoria().getEmUso() / looca.getMemoria().getTotal()) * 100;
+        Double porcentagemProcessador = (looca.getProcessador().getUso() * 100.0) / 100;
+
+
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Memoria RAM em uso: %.2f  GB".formatted(Math.round((double) looca.getMemoria().getEmUso() / Math.pow(1024, 3) * 100.0) / 100.0));
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Porcentagem de uso da Memoria RAM: %.2f".formatted(porcentagemRam) + "%");
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Porcentagem de uso do Processador: %.2f".formatted(porcentagemProcessador) + "%");
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Volume de Disco em uso: %.2f  GB".formatted(Math.round((double) looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / Math.pow(1024, 3) * 100.0) / 100.0));
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println();
+
+
+    }
+
+    public void informaçoesHardware() {
+        System.out.println();
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Minha Máquina");
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Sistema Operacional: " + System.getProperty("os.name"));
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Arquitetura do sistema: " + System.getProperty("os.arch"));
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Processador: " + looca.getProcessador().getNome());
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Volume Total da Ram: " + Math.round((double) looca.getMemoria().getTotal() / Math.pow(1024, 3) * 100.0) / 100.0 + "GB");
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Modelo do disco: " + looca.getGrupoDeDiscos().getDiscos().get(0).getModelo());
+        utilitarios.centralizaTelaHorizontal(15);
+        System.out.println("Volume Total do disco: " + Math.round((double) looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / Math.pow(1024, 3) * 100.0) / 100.0 + "GB");
     }
 
 }
