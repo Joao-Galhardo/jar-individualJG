@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="jar-individualJG:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/jar_individualJG_jar</output-path>
-    <root id="archive" name="jar-individualJG.jar">
-      <element id="module-output" name="jar-individualJG" />
-    </root>
-  </artifact>
-</component>
